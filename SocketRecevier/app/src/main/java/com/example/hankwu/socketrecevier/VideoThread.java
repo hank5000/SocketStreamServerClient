@@ -6,7 +6,12 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.View;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 
 /**
@@ -60,6 +65,7 @@ public class VideoThread extends Thread {
         }
         return data;
     }
+    DatagramSocket socket = null;
 
     public VideoThread(MainActivity a, int i, Surface surf, String mime, int width, int height, String sps, String pps, InputStream inputStream, String ip) {
         this.surface = surf;
@@ -82,6 +88,11 @@ public class VideoThread extends Thread {
     int lostFPS = 0;
 
     public void run() {
+        try {
+            socket = new DatagramSocket();
+        } catch (IOException e) {
+
+        }
 
         /// Create Decoder -START- ///
         try {
@@ -111,6 +122,8 @@ public class VideoThread extends Thread {
         ByteBuffer[] outputBuffers = decoder.getOutputBuffers();
         MediaCodec.BufferInfo info = new MediaCodec.BufferInfo();
 
+        InetSocketAddress ias = new InetSocketAddress(Global.ipAddress,1236);
+
         /// Decode -START- ///
         int readSize = 0;
         int firstNalu = 0;
@@ -124,7 +137,15 @@ public class VideoThread extends Thread {
 
         while (!Thread.interrupted() && bStart && decoder != null && is != null) {
             try {
-                readSize = is.read(inputStreamTmp);
+                if(Global.bUDP) {
+                    DatagramPacket receivedPacket = new DatagramPacket(inputStreamTmp,
+                            inputStreamTmp.length, ias);
+                    if(socket!=null) {
+                        socket.receive(receivedPacket);
+                    }
+                } else {
+                    readSize = is.read(inputStreamTmp);
+                }
 
                 if (readSize > 0) {
                     rawDataCollectBuffer.put(inputStreamTmp, 0, readSize);

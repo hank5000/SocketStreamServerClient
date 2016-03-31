@@ -22,4 +22,6 @@ public class GlobalInfo {
     static int width = 1280;
     static int height= 720;
 
+    static boolean bUDP = false;
+
 }

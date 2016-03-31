@@ -8,8 +8,11 @@ import android.view.Surface;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.nio.ByteBuffer;
 
 /**
@@ -22,6 +25,15 @@ public class Encoder {
     private MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
 
     ServerSocket serverSocket = null;
+    ServerSocket ss2 = null;
+    Socket[] rawDataClients = new Socket[4];
+    OutputStream[] outputStreams = new OutputStream[4];
+
+    DatagramSocket datagramSocket = null;
+
+
+
+
 
     private int framerate = 24;
 
@@ -44,7 +56,17 @@ public class Encoder {
         mEncoder.start();
 
         new Thread(socket_server1).start();
-        new Thread(socket_server2).start();
+
+        if(GlobalInfo.bUDP) {
+            try {
+                datagramSocket = new DatagramSocket(1236);
+                datagramSocket.setBroadcast(true);
+            } catch (SocketException e) {
+
+            }
+        } else {
+            new Thread(socket_server2).start();
+        }
 
     }
 
@@ -65,16 +87,26 @@ public class Encoder {
                 byte[] outData = new byte[bufferInfo.size];
                 outBuffer.get(outData);
                 if (sps != null && pps != null) {
-                    // Send Raw Data From Socket OutputStream
-                    for(int i=0;i<4;i++) {
-                        if(rawDataClients[i]!=null && outputStreams[i]!=null) {
-                            try {
-                                outputStreams[i].write(outData);
-                            } catch (IOException e) {
-                                outputStreams[i] = null;
-                                rawDataClients[i] = null;
-                                Log.d("Advance","Something wrong");
-                                e.printStackTrace();
+
+                    if(GlobalInfo.bUDP) {
+                        DatagramPacket packet = new DatagramPacket(outData,outData.length);
+                        try {
+                            datagramSocket.send(packet);
+                        } catch (IOException e) {
+                            Log.d("Encode","Send Packet fail");
+                        }
+                    } else {
+                        // Send Raw Data From Socket OutputStream
+                        for (int i = 0; i < 4; i++) {
+                            if (rawDataClients[i] != null && outputStreams[i] != null) {
+                                try {
+                                    outputStreams[i].write(outData);
+                                } catch (IOException e) {
+                                    outputStreams[i] = null;
+                                    rawDataClients[i] = null;
+                                    Log.d("Encode", "Write to OutputStream Something wrong");
+                                    e.printStackTrace();
+                                }
                             }
                         }
                     }
@@ -152,10 +184,6 @@ public class Encoder {
     };
 
 
-    ServerSocket ss2 = null;
-    Socket[] rawDataClients = new Socket[4];
-    OutputStream[] outputStreams = new OutputStream[4];
-
     private int findNullSlot() {
         for(int i=0;i<4;i++) {
             if(rawDataClients[i] == null) {
@@ -165,10 +193,6 @@ public class Encoder {
         return -1;
     }
 
-
-
-    Socket rawDataClient = null;
-    OutputStream os = null;
 
     private Runnable socket_server2 = new Runnable(){
         public void run(){
