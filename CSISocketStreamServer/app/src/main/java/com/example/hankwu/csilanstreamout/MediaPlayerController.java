@@ -89,6 +89,13 @@ boolean[] bPrepared = new boolean[4];
         }
     }
 
+    public void release() {
+        for(int i=0;i<number_of_play;i++) {
+            mps[i].release();
+            mps[i] = null;
+        }
+    }
+
     public void pause() {
         for(int i=0;i<number_of_play;i++) {
             mps[i].pause();

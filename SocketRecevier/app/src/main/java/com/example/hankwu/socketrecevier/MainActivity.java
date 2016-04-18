@@ -47,6 +47,22 @@ public class MainActivity extends Activity {
     Bitmap yellow = null;
 
     DatagramSocket dataSocket = null;
+    int btnNumber = 6;
+    Button[] btnArrary = new Button[btnNumber];
+
+
+    public void setButtonVisiable(int visiable) {
+        for(int i=0;i<btnNumber;i++) {
+            btnArrary[i].setVisibility(visiable);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +87,23 @@ public class MainActivity extends Activity {
         LinearLayout ll = (LinearLayout) findViewById(R.id.hank);
         mVideoSurfaceView = new VideoSurfaceView(this);
         ll.addView(mVideoSurfaceView);
+
+        final Button ipBtn =  (Button)findViewById(R.id.btnIp);
+        Button btnA = ((Button)findViewById(R.id.btnA));
+        Button btn1 = ((Button)findViewById(R.id.btn1));
+        Button btn2 = ((Button)findViewById(R.id.btn2));
+        Button btn3 = ((Button)findViewById(R.id.btn3));
+        Button btn4 = ((Button)findViewById(R.id.btn4));
+        Button btn5 = ((Button)findViewById(R.id.btn5));
+        int i =0;
+        btnArrary[i++] = btnA;
+        btnArrary[i++] = btn1;
+        btnArrary[i++] = btn2;
+        btnArrary[i++] = btn3;
+        btnArrary[i++] = btn4;
+        btnArrary[i++] = btn5;
+
+        setButtonVisiable(View.INVISIBLE);
 
         ((Button) findViewById(R.id.btnIp)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,14 +159,15 @@ public class MainActivity extends Activity {
                                             @Override
                                             public void run() {
                                                 btn.setText("Stop");
+                                                ipBtn.setVisibility(View.INVISIBLE);
+                                                setButtonVisiable(View.VISIBLE);
+
                                                 bStart = true;
                                             }
                                         });
 
                                     }
                                 }
-
-
                             } catch (java.io.IOException e) {
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -146,6 +180,8 @@ public class MainActivity extends Activity {
                         }
                     }).start();
                 } else {
+                    ipBtn.setVisibility(View.VISIBLE);
+                    setButtonVisiable(View.INVISIBLE);
                     btn.setText("Start");
                     bStart = false;
                     vt.setStop();
@@ -207,24 +243,18 @@ public class MainActivity extends Activity {
                         } else if (numberShow==2) {
                             ((ImageView) findViewById(R.id.image)).setAlpha(1.0f);
 
-                            //((ImageView) findViewById(R.id.image)).setBackgroundResource(R.drawable.white_grid);
                             ((ImageView) findViewById(R.id.image)).setImageBitmap(white);
                             ((ImageView) findViewById(R.id.image)).setScaleType(ImageView.ScaleType.FIT_XY);
-
-
                             numberShow = 3;
                         } else if (numberShow==3) {
                             ((ImageView) findViewById(R.id.image)).setAlpha(.0f);
                             numberShow = 0;
                         }
 
-
-
                         break;
                 }
             }
         };
-
 
         ((Button)findViewById(R.id.btnA)).setOnClickListener(btnClick);
         ((Button)findViewById(R.id.btn1)).setOnClickListener(btnClick);

@@ -31,10 +31,6 @@ public class Encoder {
 
     DatagramSocket datagramSocket = null;
 
-
-
-
-
     private int framerate = 24;
 
     public void create() {

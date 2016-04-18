@@ -2,46 +2,46 @@
 <items version="2" >
 
     <item
-        jar="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6e239441500605809818997dd63b62a947195f8c">
-        <dex dex="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.0-27e8475e8c2ba05c29828dd0c215847f2cfcfff5.jar" />
-    </item>
-    <item
-        jar="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
-        <dex dex="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/pre-dexed/debug/classes-d689ca6e62157c81e74ecda452011ab2205a5e61.jar" />
-    </item>
-    <item
-        jar="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="292a9fa091757208efa65e77eef63088247e51f3">
-        <dex dex="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/pre-dexed/debug/classes-9d482d329425fa0714530b0cccb33af9c43c8b92.jar" />
-    </item>
-    <item
-        jar="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
+        jar="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
-        <dex dex="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/pre-dexed/debug/classes-a0c8bb3d9eef1c2e0da86d3de51661424b890dfc.jar" />
+        <dex dex="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/pre-dexed/debug/classes-cd59848daf1979955e934563fce1dd0d023d5f3e.jar" />
+    </item>
+    <item
+        jar="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/pre-dexed/debug/classes-c88895781eb9bdd8ddd48952f22a3977e6e4997f.jar" />
+    </item>
+    <item
+        jar="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/pre-dexed/debug/classes-b01e9ea4d1be7205cffde49a4ad786717bfa0471.jar" />
     </item>
     <item
         jar="/Users/HankWu/Documents/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.0/support-annotations-23.2.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
-        <dex dex="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.0-904b011588ddd37ab2237c109995ca4232fa0fe2.jar" />
+        <dex dex="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.0-904b011588ddd37ab2237c109995ca4232fa0fe2.jar" />
     </item>
     <item
-        jar="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
+        jar="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
-        <dex dex="/Users/HankWu/Android_Project/Android/socketRecevier/app/build/intermediates/pre-dexed/debug/classes-214734817743d36e46ef89597254eaf88f5474e6.jar" />
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.0-05734322dcd630e0f03d32ea9010e244457b39c5.jar" />
+    </item>
+    <item
+        jar="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="/Users/HankWu/Android_Project/Android/SocketStreamServerClient/SocketRecevier/app/build/intermediates/pre-dexed/debug/classes-422527ecd585474131ed0ebc67c184b289c908ea.jar" />
     </item>
 
 </items>

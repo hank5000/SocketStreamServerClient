@@ -1,6 +1,7 @@
 package com.example.hankwu.csilanstreamout;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +50,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
         MediaPlayerController.mediaPlayerControllerSingleton.stop();
+        MediaPlayerController.mediaPlayerControllerSingleton.release();
         super.onPause();
     }
 }
